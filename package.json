@@ -1,0 +1,13 @@
+{
+  "name": "AuthExample",
+  "version": "1.0.0",
+  "description": "Simple example for use with External Authentication",
+  "main": "login.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Integrify Inc.",
+  "license": "ISC",
+  "dependencies": {
+   }
+}
