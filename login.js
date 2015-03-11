@@ -5,7 +5,7 @@ var querystring = require('querystring');
 
 var integrifyconfig = require('./config.js'); // config settings pointing to your Integrify instance
 
-var runOnPort = process.env.PORT || 8080; //supports running under IISNode - picks up the port from the IIS Site.
+var runOnPort = process.env.PORT || integrifyconfig.port; //supports running under IISNode - picks up the port from the IIS Site.
 
 
 // use this to store the Redirect parameter keyed by the token passed to this page from Integrify
