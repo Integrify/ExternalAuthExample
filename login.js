@@ -9,7 +9,7 @@ var runOnPort = process.env.PORT || integrifyconfig.port; //supports running und
 
 
 // use this to store the Redirect parameter keyed by the token passed to this page from Integrify
-// it will be use to redirect the user back to the Integrify site if successful.
+// it will be used to redirect the user back to the Integrify site if successful.
 var  tokenCache = {};
 
 
