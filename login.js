@@ -3,19 +3,23 @@ var url = require('url');
 var querystring = require('querystring');
 
 
-var integrifyconfig = require('./config.js'); // config settings pointing to your Integrify instance
-
-var runOnPort = process.env.PORT || integrifyconfig.port; //supports running under IISNode - picks up the port from the IIS Site.
+var runOnPort = process.env.PORT || 8080; //supports running under IISNode - picks up the port from the IIS Site.
 
 
 // use this to store the Redirect parameter keyed by the token passed to this page from Integrify
-// it will be used to redirect the user back to the Integrify site if successful.
+// it will be use to redirect the user back to the Integrify site if successful.
 var  tokenCache = {};
 
 
 http.createServer(function (req, res) {
 
+    
 
+    //you would normally load these from a config file
+    var integrifyconfig = {
+        key: 'integrifyinstance', //you integrify consumer key. you can create one by adding a row to your OAUTH_CONSUMERS table and activating it: https://developer.integrify.com/external-auth/activation
+        impersonateUrl: 'http://rtmac.integrify.com:3000/access/impersonate' //point this to your Integrify instance
+    };
 
 
 
@@ -32,7 +36,7 @@ http.createServer(function (req, res) {
 
 
         res.writeHead(200, {'Content-Type': 'text/html'});
-        var loginform = '<form action="/" method="POST">' +
+        var loginform = '<form action="/authexample/post" method="post">' +
             'token: <input type="text" name="token" value="' + token + '"\/> ' + // we will pass this through to the login form so that it is posted back for use in the call to /access/impersonate.
             'user name:<input type="text" name="username"\/> ' +
             'password: <input type="password" name="password"\/> <input type="submit"\/></form>';
